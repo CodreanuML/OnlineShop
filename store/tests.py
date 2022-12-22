@@ -5,7 +5,7 @@ from unittest import skip
 from django.test import Client       # we can simulate a client 
 from django.urls import reverse
 # Create your tests here.
-from store.views import all_products ,category_list
+from store.views import products_all ,category_list
 from django.http import HttpRequest
 
 
@@ -47,7 +47,7 @@ class TestViewResponses(TestCase):
 
 	def test_homepage_html(self):
 		request=HttpRequest()
-		response=all_products(request)
+		response=products_all(request)
 		html=response.content.decode('utf8')
 		self.assertIn('<title>Home</title>',html)
 		self.assertEqual(response.status_code,200)
